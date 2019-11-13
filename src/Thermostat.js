@@ -1,22 +1,11 @@
-function Player() {
+function Thermostat() {
+  this._temperature = 20;  
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
+Thermostat.prototype.temperature = function() {
+  return this._temperature;
+}
 
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
-
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
+Thermostat.prototype.up = function() {
+  this._temperature++;
+}
