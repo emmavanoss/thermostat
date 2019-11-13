@@ -3,7 +3,7 @@ function Thermostat(powerSavingMode = true) {
   this._minTemperature = 10;
   this._maxTemp = 0
   this._powerSavingMode = powerSavingMode; 
-  this._energyUsage = "medium Usage"
+  this._energyUsage = "medium usage"
 }
 
 Thermostat.prototype.temperature = function() {
