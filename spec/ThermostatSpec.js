@@ -14,8 +14,7 @@ describe('Thermostat', function() {
     it('Defaults to Power saving mode', function() {
       expect(thermostat._powerSavingMode).toEqual(true)
     })
-
-    
+       
   });
   
   describe ("up & down", function() {
@@ -41,14 +40,38 @@ describe('Thermostat', function() {
     });
  
     it('Power Saving mode is on then max temperature is 25', function() {
-      thermostat.powerSavingMode = true 
-      expect(thermostat._powerSavingMode).toEqual(25)
+      thermostat._powerSavingMode = true 
+      thermostat.powerSavingMode()
+      expect(thermostat._maxTemp).toEqual(25)
     });
 
     it('Power Saving mode is off then max temperature is 32', function() {
-      thermostat.powerSavingMode = false
+      thermostat._powerSavingMode = false
+      thermostat.powerSavingMode()
       expect(thermostat._maxTemp).toEqual(32)
     });
+
+    it("reset the temperature to 20 with a reset function", function(){
+      thermostat._temperature = 11
+      thermostat.reset()
+      expect(thermostat._temperature).toEqual(20)
+    });
+  });
+
+  describe("Energy Usage", function(){
+    
+    it("return Energy Usage rating", function(){
+      thermostat._temperature = 18
+      thermostat.energy()
+      expect(thermostat._energyUsage).toEqual("low usage")
+    }); 
+
+    it("return Energy Usage rating", function(){
+      thermostat._temperature = 34
+      thermostat.energy()
+      expect(thermostat._energyUsage).toEqual("High usage")
+    }); 
+
 
   });
 
