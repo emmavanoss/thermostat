@@ -56,19 +56,19 @@ describe('Thermostat', function() {
   });
 
   describe("Energy Usage", function(){
-    it("Return Energy Usage rating", function(){
+    it("Return Low Usage if temp <= 18", function(){
       thermostat._temperature = 18
       thermostat.energy()
       expect(thermostat._energyUsage).toEqual("low usage")
     }); 
 
-    it("Return Energy Usage rating", function(){
-      thermostat._temperature = 34
+    it("Return High Usage when temp >= 25", function(){
+      thermostat._temperature = 25
       thermostat.energy()
       expect(thermostat._energyUsage).toEqual("High usage")
     }); 
 
-    it("Return Energy Usage rating", function(){
+    it("Return medium usage if temp betw 18 and 25", function(){
       thermostat._temperature = 21
       thermostat.energy()
       expect(thermostat._energyUsage).toEqual("medium usage")
